@@ -1,0 +1,630 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.17763}\viewkind4\uc1 
+\pard\f0\fs22\{\par
+  "Assumed Packet": 1,\par
+  "type": "WebApp",\par
+  "meta": \{\par
+    "name": "Enemy Hunter",\par
+    "version": "0.0.0",\par
+    "minimum-overwolf-version": "0.120.0",\par
+    "author": "Jonathan Hardin",\par
+    "icon": "IconMouseOver.png",\par
+    "icon_gray": "IconMouseNormal.png",\par
+    "launcher_icon": "desktop-icon.ico",\par
+    "description": "Sample app for PUBG dev challenge in JSON React"\par
+  \},\par
+\par
+\par
+func getPlayer(playerName string) playerObject \{\par
+    apiResponse := makePlayerNameRequest(playerName) \par
+//query the API for the given player name\par
+\par
+    if apiResponse != nil \{\par
+        //we found the player in the API\par
+        player := processPlayer(apiResponse) \par
+//process the API response into a player object\par
+        return player\par
+    \}\par
+\}\par
+
+\pard\sa200\sl276\slmult1\f1\lang9\par
+func getPlayer(playerName string) playerObject \{\par
+    player := getPlayerFromCache(playerName) //try to get the player object from the cache\par
+    if player != nil \{\par
+        return player    \}\par
+\par
+//we couldn't find the player object in the cache\par
+    apiResponse:= makePlayerNameRequest(playerName) //query the API for the given player name\par
+\par
+    if apiResponse != nil \{\par
+        //we found the player in the API\par
+        player := processPlayer(apiResponse) //process the API response into a player object\par
+\par
+        //store the player in the cache for next time\par
+        //this function takes in the player object to store, and an integer representing how long the //object should remain in the cache\par
+        storePlayerInCache(player, 30)\par
+\par
+        return player\par
+    \}\par
+//Follow Up to six players \par
+\{\par
+  "data": [\par
+    \{\par
+      "type": "string",\par
+      "id": "string",\par
+      "attributes": \{\par
+        "name": "string",\par
+        "shardId": "string",\par
+        "stats": \{\},\par
+        "createdAt": "string",\par
+        "updatedAt": "string",\par
+        "patchVersion": "string",\par
+        "titleId": "string"\par
+      \},\par
+      "relationships": \{\par
+        "assets": \{\par
+          "data": \{\}\par
+        \},\par
+        "matches": \{\par
+          "data": [\par
+            \{\par
+              "id": "string",\par
+              "type": "string"\par
+            \}\par
+          ]\par
+        \}\par
+      \},\par
+      "links": \{\par
+        "schema": "string",\par
+        "self": "string"\par
+      \}\par
+    \}\par
+  ],\par
+  "links": \{\par
+    "self": "string"\par
+  \},\par
+  "meta": \{\}\par
+\}\par
+    return nil\par
+\}\par
+//Lifetime Stats of Targeted Player\par
+\{\par
+  "data": \{\par
+    "type": "string",\par
+    "attributes": \{\par
+      "gameModeStats": \{\par
+        "duo": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \},\par
+        "duo-fpp": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \},\par
+        "solo": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \},\par
+        "solo-fpp": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \},\par
+        "squad": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \},\par
+        "squad-fpp": \{\par
+          "assists": 0,\par
+          "bestRankPoint": 0,\par
+          "boosts": 0,\par
+          "dBNOs": 0,\par
+          "dailyKills": 0,\par
+          "damageDealt": 0,\par
+          "days": 0,\par
+          "dailyWins": 0,\par
+          "headshotKills": 0,\par
+          "heals": 0,\par
+          "killPoints": 0,\par
+          "kills": 0,\par
+          "longestKill": 0,\par
+          "longestTimeSurvived": 0,\par
+          "losses": 0,\par
+          "maxKillStreaks": 0,\par
+          "mostSurvivalTime": 0,\par
+          "rankPoints": 0,\par
+          "rankPointsTitle": "string",\par
+          "revives": 0,\par
+          "rideDistance": 0,\par
+          "roadKills": 0,\par
+          "roundMostKills": 0,\par
+          "roundsPlayed": 0,\par
+          "suicides": 0,\par
+          "swimDistance": 0,\par
+          "teamKills": 0,\par
+          "timeSurvived": 0,\par
+          "top10s": 0,\par
+          "vehicleDestroys": 0,\par
+          "walkDistance": 0,\par
+          "weaponsAcquired": 0,\par
+          "weeklyKills": 0,\par
+          "weeklyWins": 0,\par
+          "winPoints": 0,\par
+          "wins": 0\par
+        \}\par
+      \}\par
+    \},\par
+    "relationships": \{\par
+      "player": \{\par
+        "data": \{\par
+          "type": "string",\par
+          "id": "string"\par
+        \}\par
+      \},\par
+      "matchesSolo": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "matchesSoloFPP": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "matchesDuo": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "matchesDuoFPP": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "matchesSquad": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "matchesSquadFPP": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "season": \{\par
+        "data": \{\par
+          "type": "string",\par
+          "id": "string"\par
+        \}\par
+      \}\par
+    \}\par
+  \},\par
+  "links": \{\par
+    "self": "string"\par
+  \},\par
+  "meta": \{\}\par
+\}\par
+//Single Game Results Statistics\par
+\{\par
+  "data": \{\par
+    "type": "string",\par
+    "id": "string",\par
+    "attributes": \{\par
+      "createdAt": "string",\par
+      "duration": 0,\par
+      "gameMode": "single",\par
+      "mapName": "Desert_Main",\par
+      "isCustomMatch": true,\par
+      "patchVersion": "string",\par
+      "seasonState": "closed",\par
+      "shardId": "string",\par
+      "stats": \{\},\par
+      "tags": \{\},\par
+      "titleId": "string"\par
+    \},\par
+    "relationships": \{\par
+      "assets": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rosters": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rounds": \{\},\par
+      "spectators": \{\}\par
+    \},\par
+    "links": \{\par
+      "schema": "string",\par
+      "self": "string"\par
+    \}\par
+  \},\par
+  "included": [\par
+    null\par
+  ],\par
+  "links": \{\par
+    "self": "string"\par
+  \},\par
+  "meta": \{\}\par
+\}\par
+\par
+//Duo Game Statistics\par
+\{\par
+  "data": \{\par
+    "type": "string",\par
+    "id": "string",\par
+    "attributes": \{\par
+      "createdAt": "string",\par
+      "duration": 0,\par
+      "gameMode": "Single",\par
+      "mapName": "Desert_Main",\par
+      "isCustomMatch": true,\par
+      "patchVersion": "string",\par
+      "seasonState": "closed",\par
+      "shardId": "string",\par
+      "stats": \{\},\par
+      "tags": \{\},\par
+      "titleId": "string"\par
+    \},\par
+    "relationships": \{\par
+      "assets": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rosters": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rounds": \{\},\par
+      "spectators": \{\}\par
+    \},\par
+    "links": \{\par
+      "schema": "string",\par
+      "self": "string"\par
+    \}\par
+  \},\par
+  "included": [\par
+    null\par
+  ],\par
+  "links": \{\par
+    "self": "string"\par
+  \},\par
+  "meta": \{\}\par
+\}\par
+//Squad Game Results\par
+\{\par
+  "data": \{\par
+    "type": "string",\par
+    "id": "string",\par
+    "attributes": \{\par
+      "createdAt": "string",\par
+      "duration": 0,\par
+      "gameMode": "squad",\par
+      "mapName": "Desert_Main",\par
+      "isCustomMatch": true,\par
+      "patchVersion": "string",\par
+      "seasonState": "closed",\par
+      "shardId": "string",\par
+      "stats": \{\},\par
+      "tags": \{\},\par
+      "titleId": "string"\par
+    \},\par
+    "relationships": \{\par
+      "assets": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rosters": \{\par
+        "data": [\par
+          \{\par
+            "type": "string",\par
+            "id": "string"\par
+          \}\par
+        ]\par
+      \},\par
+      "rounds": \{\},\par
+      "spectators": \{\}\par
+    \},\par
+    "links": \{\par
+      "schema": "string",\par
+      "self": "string"\par
+    \}\par
+  \},\par
+  "included": [\par
+    null\par
+  ],\par
+  "links": \{\par
+    "self": "string"\par
+  \},\par
+  "meta": \{\}\par
+\}\par
+//Telemetry Entries to pull stats to pin on targeted \par
+"relationships": \{\par
+  ...\par
+  "assets": \{\par
+    "data": [\par
+      \{\par
+        "type": "asset",\par
+        "id": "1ad97f85-cf9b-11e7-b84e-0a586460f004"\par
+//Character Attacker Info\par
+"attackId":           int,\par
+"attacker":           \{Character\},\par
+"victim":             \{Character\},\par
+"damageTypeCategory": string,\par
+"damageReason":       string,\par
+"damageCauserName":   string,\par
+"item":               \{Item\},\par
+"distance":           number\par
+\par
+//Killer Info\par
+"attackId":                   int,\par
+"killer":                     \{Character\},\par
+"victim":                     \{Character\},\par
+"assistant":                  \{Character\},\par
+"dBNOId":                     int\par
+"damageTypeCategory":         string,\par
+"damageCauserName":           string,\par
+"damageCauserAdditionalInfo": [string],\par
+"damageReason":               string,\par
+"distance":                   number,\par
+"victimGameResult":           \{GameResult\}\par
+\par
+      \}\par
+\par
+    ]\par
+  \}\par
+  ...\par
+\}\par
+//Retrieval\par
+\{\par
+  "type": "asset",\par
+  "id": "1ad97f85-cf9b-11e7-b84e-0a586460f004",\par
+  "attributes": \{\par
+    "URL": "{{\field{\*\fldinst{HYPERLINK https://telemetry-cdn.pubg.com/pc-krjp/2018/01/01/0/0/1ad97f85-cf9b-11e7-b84e-0a586460f004-telemetry.json }}{\fldrslt{https://telemetry-cdn.pubg.com/pc-krjp/2018/01/01/0/0/1ad97f85-cf9b-11e7-b84e-0a586460f004-telemetry.json\ul0\cf0}}}}\f1\fs22 ", //Note this link will not work\par
+    "createdAt": "2018-01-01T00:00:00Z",\par
+    "description": "",\par
+    "name": "telemetry"\par
+\par
+//Retrieve Player in-Game info\par
+\{\par
+  "name":         string,\par
+  "teamId":       int,\par
+  "health":       number,\par
+  "location":     Location,\par
+  "ranking":      int,\par
+  "accountId":    string\par
+  "isInBlueZone": bool,\par
+  "isInRedZone":  bool,\par
+  "zone":         [regionId, ...]\par
+\}\par
+//Game Results\par
+\{\par
+  "rank":       int,\par
+  "gameResult": string,\par
+  "teamId":     int,\par
+  "stats":      \{Stats\},\par
+  "accountId":  string\par
+\}\par
+// Result of player kills and tendancy \par
+\{\par
+  "killCount":           int,\par
+  "distanceOnFoot":      number,\par
+  "distanceOnSwim":      number,\par
+  "distanceOnVehicle":   number,\par
+  "distanceOnParachute": number,\par
+  "distanceOnFreefall":  number\par
+\}\par
+\par
+  \}\par
+\},\par
+\par
+}
+ 
