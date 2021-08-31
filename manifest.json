@@ -35,7 +35,7 @@
       "Enemy_Hunter_showhide": {
         "title": "Show In-Game Window",
         "action-type": "toggle",
-        "default": "Ctrl+F"
+        "default": "Ctrl+Z"
       },
       "Enemy_Enemy_screenshot": {
         "title": "Take Screenshot",
